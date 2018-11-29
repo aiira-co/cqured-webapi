@@ -1,0 +1,34 @@
+# <IfModule mode_rewrite.c>
+#     <IfModule mode_negotiation.c>
+#         Options -MultiViews
+#     </IfModule>
+
+RewriteEngine on
+
+##
+## You may need to uncommet the follwing line for some hosting environmets,
+## If you have installed a subdirectory, enter the name here also.
+##
+# RewriteBase
+
+##
+## Black list protected files
+##
+
+
+
+##
+## White list folder and files
+##
+
+RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+
+##
+## Rewrite for routing
+##
+RewriteRule ^(.*)$ index.php?CquredQueryUrl=$1 [L,QSA]
+
+RewriteRule \.(json)$ - [F]
+# </IfModule>
